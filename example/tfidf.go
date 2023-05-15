@@ -11,6 +11,9 @@ func main()  {
 	dt := tinyidf.NewTokenizer("./dict/dict.txt")
 	tfIdf := tinyidf.NewTfIdf(dt, "./dict/idf.txt")
 
+	//try init inter model
+	dt.InitInterModel("model")
+
 	//setup source string
 	s := "此外，公司拟对全资子公司吉林欧亚置业有限公司增资4.3亿元，增资后，吉林欧亚" +
 		"置业注册资本由7000万元增加到5亿元。吉林欧亚置业主要经营范围为房地产开发及" +

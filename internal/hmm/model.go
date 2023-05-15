@@ -39,8 +39,9 @@ func byte2state(state byte) int {
 	}
 }
 
-func loadStartP() {
-	fp, err := os.Open("model/prob_start.txt")
+func loadStartP(modelDir string) {
+	modelFile := fmt.Sprintf("%v/prob_start.txt", modelDir)
+	fp, err := os.Open(modelFile)
 	if err != nil {
 		panic(err)
 	}
@@ -66,14 +67,15 @@ func loadStartP() {
 	}
 }
 
-func loadTransP() {
+func loadTransP(modelDir string) {
+	modelFile := fmt.Sprintf("%v/prob_trans.txt", modelDir)
 	for i := 0; i < 4; i++ {
 		for j := 0; j < 4; j++ {
 			transP[i][j] = minFloat
 		}
 	}
 
-	fp, err := os.Open("model/prob_trans.txt")
+	fp, err := os.Open(modelFile)
 	if err != nil {
 		panic(err)
 	}
@@ -101,12 +103,13 @@ func loadTransP() {
 	}
 }
 
-func loadEmitP() {
+func loadEmitP(modelDir string) {
+	modelFile := fmt.Sprintf("%v/prob_emit.txt", modelDir)
 	for i := 0; i < 4; i++ {
 		emitP[i] = make(map[rune]float64)
 	}
 
-	fp, err := os.Open("model/prob_emit.txt")
+	fp, err := os.Open(modelFile)
 	if err != nil {
 		panic(err)
 	}
@@ -140,9 +143,9 @@ func buildPrevState() {
 	prevState[stateE] = []int{stateB, stateM}
 }
 
-func init() {
-	loadStartP()
-	loadTransP()
-	loadEmitP()
+func InitModel(modelDir string) {
+	loadStartP(modelDir)
+	loadTransP(modelDir)
+	loadEmitP(modelDir)
 	buildPrevState()
 }

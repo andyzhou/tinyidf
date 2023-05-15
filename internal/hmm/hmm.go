@@ -1,6 +1,7 @@
 package hmm
 
 import (
+	"errors"
 	"github.com/andyzhou/tinyidf/internal/common"
 	"math"
 )
@@ -15,6 +16,15 @@ func NewHMM() *HMM {
 	return &HMM{
 		forceSplitWords: common.NewStringSet(),
 	}
+}
+
+//init model
+func (hmm *HMM) InitModel(modelDir string) error {
+	if modelDir == "" {
+		return errors.New("invalid parameter")
+	}
+	InitModel(modelDir)
+	return nil
 }
 
 // AddForceSplit implement jieba.finalseg.add_force_split method.

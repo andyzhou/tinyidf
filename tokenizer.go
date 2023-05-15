@@ -23,6 +23,11 @@ func NewTokenizer(dict string) *Tokenizer {
 	}
 }
 
+//init inter model, must init!!
+func (t *Tokenizer) InitInterModel(modelDir string) error {
+	return t.hmm.InitModel(modelDir)
+}
+
 func (t *Tokenizer) String() string {
 	return fmt.Sprintf("Tokenizer(dict: '%s')", t.dict.GetFile())
 }
