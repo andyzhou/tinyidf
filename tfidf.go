@@ -23,10 +23,10 @@ type TfIdf struct {
 }
 
 // NewTfIdf create an instance of TF-IDF with the given tokenizer and idf file.
-func NewTfIdf(t *Tokenizer, idf string) *TfIdf {
+func NewTfIdf(t *Tokenizer, idfFile string) *TfIdf {
 	tfIdf := &TfIdf{
 		tokenizer: t,
-		idf:       NewIDFTable(idf),
+		idf:       NewIDFTable(idfFile),
 		stopWords: common.NewStringSet(),
 	}
 	for _, sw := range defaultStopWords {

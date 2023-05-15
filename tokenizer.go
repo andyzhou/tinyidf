@@ -16,9 +16,9 @@ type Tokenizer struct {
 }
 
 // NewTokenizer create an instance of Tokenizer with the given dict file.
-func NewTokenizer(dict, modelDir string) *Tokenizer {
+func NewTokenizer(dictFile, modelDir string) *Tokenizer {
 	this := &Tokenizer{
-		dict: NewDictionary(dict),
+		dict: NewDictionary(dictFile),
 		hmm:  hmm.NewHMM(),
 	}
 	this.hmm.InitModel(modelDir)
