@@ -10,7 +10,7 @@ import (
 func TestCut(t *testing.T) {
 	var got, want []string
 
-	dt := tinyidf.NewTokenizer("./dict/dict.txt")
+	dt := tinyidf.NewTokenizer("./dict/dict.txt", "./model")
 	t.Logf("%v\n", dt)
 
 	got = dt.CutAll("我来到北京清华大学", true)
@@ -59,7 +59,7 @@ func TestTokenize(t *testing.T) {
 	var got, want []string
 	var tokens []tinyidf.Token
 
-	dt := tinyidf.NewTokenizer("./dict/dict.txt")
+	dt := tinyidf.NewTokenizer("./dict/dict.txt", "./model")
 	t.Logf("%v\n", dt)
 
 	tokens = dt.Tokenize(s, true)
@@ -99,7 +99,7 @@ func TestTokenize(t *testing.T) {
 func TestAddDelWord(t *testing.T) {
 	var got, want []string
 
-	dt := tinyidf.NewTokenizer("./dict/dict.txt")
+	dt := tinyidf.NewTokenizer("./dict/dict.txt", "./model")
 	t.Logf("%v\n", dt)
 
 	got = dt.Cut("李小福是创新办主任也是云计算方面的专家", true)
@@ -131,7 +131,7 @@ func TestSuggestFreq(t *testing.T) {
 	var got, want []string
 	var freq int64
 
-	dt := tinyidf.NewTokenizer("./dict/dict.txt")
+	dt := tinyidf.NewTokenizer("./dict/dict.txt", "./model")
 	t.Logf("%v\n", dt)
 
 	got = dt.Cut("如果放到post中将出错。", false)

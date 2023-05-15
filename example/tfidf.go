@@ -8,11 +8,8 @@ import (
 
 func main()  {
 	//try load relate data
-	dt := tinyidf.NewTokenizer("./dict/dict.txt")
-	tfIdf := tinyidf.NewTfIdf(dt, "./dict/idf.txt")
-
-	//try init inter model
-	dt.InitInterModel("model")
+	tokenizer := tinyidf.NewTokenizer("./dict/dict.txt", "./model")
+	tfIdf := tinyidf.NewTfIdf(tokenizer, "./dict/idf.txt")
 
 	//setup source string
 	s := "此外，公司拟对全资子公司吉林欧亚置业有限公司增资4.3亿元，增资后，吉林欧亚" +

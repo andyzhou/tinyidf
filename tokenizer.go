@@ -16,16 +16,13 @@ type Tokenizer struct {
 }
 
 // NewTokenizer create an instance of Tokenizer with the given dict file.
-func NewTokenizer(dict string) *Tokenizer {
-	return &Tokenizer{
+func NewTokenizer(dict, modelDir string) *Tokenizer {
+	this := &Tokenizer{
 		dict: NewDictionary(dict),
 		hmm:  hmm.NewHMM(),
 	}
-}
-
-//init inter model, must init!!
-func (t *Tokenizer) InitInterModel(modelDir string) error {
-	return t.hmm.InitModel(modelDir)
+	this.hmm.InitModel(modelDir)
+	return this
 }
 
 func (t *Tokenizer) String() string {

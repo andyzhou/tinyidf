@@ -10,7 +10,7 @@ import (
 func main() {
 	var got, want []string
 
-	dt := tinyidf.NewTokenizer("./dict/dict.txt")
+	dt := tinyidf.NewTokenizer("./dict/dict.txt", "./model")
 
 	got = dt.CutAll("我来到北京清华大学", true)
 	want = []string{"我", "来到", "北京", "清华", "清华大学", "华大", "大学"}

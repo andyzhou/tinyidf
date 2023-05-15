@@ -8,7 +8,7 @@ import (
 
 func TestExtract(t *testing.T) {
 
-	dt := tinyidf.NewTokenizer("./dict/dict.txt")
+	dt := tinyidf.NewTokenizer("./dict/dict.txt", "./model")
 	tfIdf := tinyidf.NewTfIdf(dt, "./dict/idf.txt")
 	t.Logf("%v\n", tfIdf)
 
