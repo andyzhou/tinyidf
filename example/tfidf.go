@@ -21,10 +21,11 @@ func main()  {
 	tfIdf.AddStopWord("")
 
 	//try extract key words
-	kws := tfIdf.Extract(s, 10)
+	kws := tfIdf.Extract(s, 20)
 
 	got := make([]string, 0, len(kws))
 	for _, kw := range kws {
+		log.Printf("word:%v, score:%v\n", kw.GetWord(), kw.GetScore())
 		got = append(got, kw.GetWord())
 	}
 

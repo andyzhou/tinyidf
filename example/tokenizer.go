@@ -18,10 +18,11 @@ func main() {
 	checkResult(got, want)
 
 	got = dt.Cut("我来到北京清华大学", true)
+	gotForSearch := dt.CutForSearch("我来到北京清华大学", true)
 	want = []string{"我", "来到", "北京", "清华大学"}
 	logResult("Accurate mode", got)
+	logResult("Accurate mode gotForSearch", gotForSearch)
 	checkResult(got, want)
-
 
 	got = dt.Cut("他来到了网易杭研大厦", true)
 	want = []string{"他", "来到", "了", "网易", "杭研", "大厦"}
