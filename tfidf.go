@@ -77,6 +77,10 @@ func (t *TfIdf) Extract(sentence string, topK int) []Keyword {
 	sort.Slice(kws, func(i, j int) bool {
 		return kws[i].score > kws[j].score
 	})
-	return kws[:topK]
+	total := len(kws)
+	if total >= topK {
+		return kws[:topK]
+	}
+	return kws
 }
 
